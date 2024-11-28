@@ -59,7 +59,9 @@ void keyReleased() {
   if (keyCode == 'D') {
     goRight = false;
   }
-   
+   if (keyCode == 'M') {
+    rect(x+20,y,20,5);
+  }
 }
 void move() {
   //reset the movement to zero
