@@ -6,7 +6,7 @@ float moveX;
 float moveY;
 float x;
 float y;
-
+Charger myCharger;
 goblin myGoblin;
 tree myTrees;
 
@@ -14,6 +14,7 @@ tree[] trees = new tree[20];
 void setup() {
   size( 400, 400);
   myGoblin = new goblin();
+  myCharger = new Charger();
   for (int i = 0; i<trees.length; i++) {
     trees[i]  = new tree(30*i-40);
   }
@@ -23,6 +24,8 @@ void setup() {
 void draw(){
   background(#32C602);
   fill(0);
+  myCharger.movement();
+  myCharger.display();
   myGoblin.display();
   myGoblin.move();
   rect(x, y, 20, 20);
