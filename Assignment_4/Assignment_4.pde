@@ -6,8 +6,10 @@ float moveX;
 float moveY;
 float x;
 float y;
+
 goblin myGoblin;
 tree myTrees;
+
 tree[] trees = new tree[20];
 void setup() {
   size( 400, 400);
