@@ -8,6 +8,7 @@ class Charger {
     velocity = new PVector(0.1, 0);
   }
   void movement() {
+    location.add(velocity);
     if (location.x<=x) {
       velocity.x  = velocity.x+ .01;
     }
