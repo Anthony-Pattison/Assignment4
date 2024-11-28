@@ -8,11 +8,11 @@ float moveX;
 float moveY;
 float x;
 float y;
-<<<<<<< HEAD
+
 int score;
-=======
+
 Charger myCharger;
->>>>>>> charger
+
 goblin myGoblin;
 tree myTrees;
 
