@@ -2,10 +2,13 @@ boolean goUp = false;
 boolean goDown = false;
 boolean goLeft = false;
 boolean goRight = false;
+boolean att = false;
+boolean lookRight = false;
 float moveX;
 float moveY;
 float x;
 float y;
+int score;
 goblin myGoblin;
 tree myTrees;
 tree[] trees = new tree[20];
@@ -28,6 +31,11 @@ void draw(){
     trees[i].display();
   }
   move();
+  attack();
+  fill(225);
+  rect(337,375,45,20);
+  fill(0);
+  text("Score: "+score,340,390);
 }
 void keyPressed() {
   if (keyCode == 'W') {
@@ -41,7 +49,11 @@ void keyPressed() {
   }
   if (keyCode == 'D') {
     goRight = true;
+    lookRight = true;
     
+  }
+  if (keyCode == 'M') {
+   att = true;
   }
    
 }
@@ -58,11 +70,27 @@ void keyReleased() {
   }
   if (keyCode == 'D') {
     goRight = false;
+    lookRight = false;
   }
    if (keyCode == 'M') {
-    rect(x+20,y,20,5);
+   att = false;
   }
 }
+
+void attack(){
+ if (att){
+   fill(255);
+   rect(x-10+(32*int(lookRight)),y,10,5);
+   if(gobX >=x-10+(32*int(lookRight)) && gobX<=x+(32*int(lookRight))){
+     if(gobY >=y-2 && gobY<=y+5){
+     gobY = 0;
+     gobX = 0;
+     score++;
+   }
+   }
+ } 
+}
+
 void move() {
   //reset the movement to zero
   moveX=0;
