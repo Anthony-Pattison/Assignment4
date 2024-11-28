@@ -6,9 +6,13 @@ float moveX;
 float moveY;
 float x;
 float y;
+tree myTrees;
+tree[] trees = new tree[20];
 void setup() {
   size( 400, 400);
-  
+  for (int i = 0; i<trees.length; i++) {
+    trees[i]  = new tree(30*i-40);
+  }
   x=200;
   y=200;
 }
@@ -16,6 +20,9 @@ void draw(){
   background(#32C602);
   fill(0);
   rect(x, y, 20, 20);
+   for (int i = 0; i<trees.length; i++) {
+    trees[i].display();
+  }
   move();
 }
 void keyPressed() {
