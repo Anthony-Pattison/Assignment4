@@ -22,7 +22,7 @@ class goblin {
     }
     if (gobX>= x&& gobX <=x+10) {
       if (gobY>= y&& gobY <=y+10) {
-        println("g");
+        
       }
     }
   }
