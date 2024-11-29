@@ -8,7 +8,7 @@ float moveX;
 float moveY;
 float x;
 float y;
-
+int health = 6;
 int score;
 
 Charger myCharger;
@@ -27,7 +27,7 @@ void setup() {
   x=200;
   y=200;
 }
-void draw(){
+void draw() {
   background(#32C602);
   fill(0);
   myCharger.movement();
@@ -35,15 +35,16 @@ void draw(){
   myGoblin.display();
   myGoblin.move();
   rect(x, y, 20, 20);
-   for (int i = 0; i<trees.length; i++) {
+  for (int i = 0; i<trees.length; i++) {
     trees[i].display();
   }
+  
   move();
   attack();
   fill(225);
-  rect(337,375,45,20);
+  rect(337, 375, 45, 20);
   fill(0);
-  text("Score: "+score,340,390);
+  text("Score: "+score, 340, 390);
 }
 void keyPressed() {
   if (keyCode == 'W') {
@@ -59,12 +60,10 @@ void keyPressed() {
   if (keyCode == 'D') {
     goRight = true;
     lookRight = true;
-    
   }
   if (keyCode == 'M') {
-   att = true;
+    att = true;
   }
-   
 }
 void keyReleased() {
   if (keyCode == 'W') {
@@ -75,31 +74,45 @@ void keyReleased() {
   }
   if (keyCode == 'A') {
     goLeft = false;
-  
   }
   if (keyCode == 'D') {
     goRight = false;
-   
   }
-   if (keyCode == 'M') {
-   att = false;
+  if (keyCode == 'M') {
+    att = false;
   }
 }
 
-void attack(){
- if (att){
-   fill(255);
-   rect(x-10+(32*int(lookRight)),y,10,5);
-   if(gobX >=x-10+(32*int(lookRight)) && gobX<=x+(32*int(lookRight))){
-     if(gobY >=y-2 && gobY<=y+5){
-     gobY = 0;
-     gobX = 0;
-     score++;
-   }
-   }
- } 
+void attack() {
+  if (att) {
+    fill(255);
+    rect(x-10+(32*int(lookRight)), y, 10, 5);
+    if (gobX >=x-10+(32*int(lookRight)) && gobX<=x+(32*int(lookRight))) {
+      if (gobY >=y-2 && gobY<=y+5) {
+        gobY = 0;
+        gobX = 0;
+        score++;
+      }
+    }
+  }
+  if (att) {
+    if (myCharger.location.x+30 >=x-10+(32*int(lookRight)) && myCharger.location.x<=x+(32*int(lookRight))) {
+      if (myCharger.location.x+30 >=x-10+(32*int(lookRight)) && myCharger.location.x<=x+(32*int(lookRight))) {
+        if (myCharger.location.y+30 >=y && myCharger.location.y<=y) {
+          health--;
+        }
+      }
+    }
+  }
+  if (health == 0) {
+    myCharger.location.y = 0;
+    myCharger.location.x = 0;
+    myCharger.velocity.x = 0;
+    health = 6;
+    score = score + 2;
+  }
+  println(health);
 }
-
 void move() {
   //reset the movement to zero
   moveX=0;
