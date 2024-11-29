@@ -54,6 +54,7 @@ void keyPressed() {
   }
   if (keyCode == 'A') {
     goLeft = true;
+    lookRight = false;
   }
   if (keyCode == 'D') {
     goRight = true;
@@ -74,11 +75,11 @@ void keyReleased() {
   }
   if (keyCode == 'A') {
     goLeft = false;
-   
+  
   }
   if (keyCode == 'D') {
     goRight = false;
-    lookRight = false;
+   
   }
    if (keyCode == 'M') {
    att = false;
