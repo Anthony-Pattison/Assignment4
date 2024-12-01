@@ -10,15 +10,18 @@ float x;
 float y;
 int health = 6;
 int score;
+int gameOver;
 
 Charger myCharger;
-
 goblin myGoblin;
 tree myTrees;
 
+PImage heart;
 tree[] trees = new tree[20];
 void setup() {
+  
   size( 400, 400);
+  heart = loadImage("heart.png");
   myGoblin = new goblin();
   myCharger = new Charger();
   for (int i = 0; i<trees.length; i++) {
@@ -26,9 +29,13 @@ void setup() {
   }
   x=200;
   y=200;
+  gameOver = 3;
 }
 void draw() {
   background(#32C602);
+  for(int i =1; (i-1)<gameOver;i++){
+  image(heart,(30*i),30,30,30);
+  }
   fill(0);
   myCharger.movement();
   myCharger.display();
@@ -42,9 +49,9 @@ void draw() {
   move();
   attack();
   fill(225);
-  rect(337, 375, 45, 20);
+  rect(337, 375, 55, 20);
   fill(0);
-  text("Score: "+score, 340, 390);
+  text("Score: "+score, 340, 388);
 }
 void keyPressed() {
   if (keyCode == 'W') {

@@ -1,5 +1,6 @@
 int gobX = 30;
 int gobY = 30;
+int timer = 100;
 class goblin {
 
   goblin() {
@@ -8,22 +9,27 @@ class goblin {
     rect(gobX, gobY, 5, 5);
   }
   void move() {
-    if (x>=gobX) {
+    timer++;
+    if (x+5>=gobX) {
       gobX++;
     }
-    if (x<=gobX) {
+    if (x+5<=gobX) {
       gobX--;
     }
-    if (y>=gobY) {
+    if (y+5>=gobY) {
       gobY++;
     }
-    if (y<=gobY) {
+    if (y+5<=gobY) {
       gobY--;
     }
     if (gobX>= x&& gobX <=x+10) {
       if (gobY>= y&& gobY <=y+10) {
-        
+        if(timer >= 100){
+          timer = 0;
+        gameOver--;
+        }
       }
     }
+    println(timer);
   }
 }
