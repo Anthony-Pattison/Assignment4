@@ -162,6 +162,7 @@ void move() {
   if (goLeft) {
     moveX = -2;
   }
+  
   // add the movement
   x= x+moveX;
   y= y+moveY;
