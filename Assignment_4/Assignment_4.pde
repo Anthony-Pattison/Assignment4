@@ -45,11 +45,13 @@ void draw() {
     image(heart, (30*i), 30, 30, 30);
   }
   fill(0);
+  if(score >= 20){
   if (!shoot) {
     myArrows.move();
   }
   if (shoot) {
     myArrows.movereal();
+  }
   }
   myArrows.display();
   myArrows.hit();
@@ -117,8 +119,8 @@ void attack() {
     rect(x-10+(32*int(lookRight)), y, 10, 5);
     if (gobX >=x-10+(32*int(lookRight)) && gobX<=x+(32*int(lookRight))) {
       if (gobY >=y-2 && gobY<=y+5) {
-        gobY = 0;
-        gobX = 0;
+        gobY = int(random(10,40));
+        gobX = int(random(10,40));
         score++;
       }
     }
