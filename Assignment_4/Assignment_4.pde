@@ -13,8 +13,9 @@ int health = 6;
 int score;
 int gameOver;
 int hurt;
-int arrowX;
+boolean shoot;
 
+Arrows  myArrows;
 Charger myCharger;
 goblin myGoblin;
 tree myTrees;
@@ -22,18 +23,18 @@ tree myTrees;
 PImage heart;
 tree[] trees = new tree[20];
 void setup() {
-hurt = 255;
+  hurt = 255;
   size( 400, 400);
   heart = loadImage("heart.png");
   myGoblin = new goblin();
   myCharger = new Charger();
+  myArrows = new Arrows();
   for (int i = 0; i<trees.length; i++) {
     trees[i]  = new tree(30*i-40);
   }
   x=200;
   y=200;
   gameOver = 3;
-  arrowX = int(x);
 }
 void draw() {
   background(#32C602);
@@ -44,11 +45,19 @@ void draw() {
     image(heart, (30*i), 30, 30, 30);
   }
   fill(0);
+  if (!shoot) {
+    myArrows.move();
+  }
+  if (shoot) {
+    myArrows.movereal();
+  }
+  myArrows.display();
+
   myCharger.movement();
   myCharger.display();
   myGoblin.display();
   myGoblin.move();
-  fill(0,0,0,hurt);
+  fill(0, 0, 0, hurt);
   rect(x, y, 20, 20);
   for (int i = 0; i<trees.length; i++) {
     trees[i].display();
@@ -80,7 +89,7 @@ void keyPressed() {
     att = true;
   }
   if (keyCode == 'N') {
-    arrowMove = true;
+    shoot = true;
   }
 }
 void keyReleased() {
@@ -92,15 +101,13 @@ void keyReleased() {
   }
   if (keyCode == 'A') {
     goLeft = false;
+   
   }
   if (keyCode == 'D') {
     goRight = false;
   }
   if (keyCode == 'M') {
     att = false;
-  }
-   if (keyCode == 'M') {
-    arrowMove = false;
   }
 }
 
@@ -132,13 +139,6 @@ void attack() {
     health = 6;
     score = score + 2;
   }
- if(arrowMove){
- 
- arrowX++;
-  
- 
- }
- if(key == 'n'){ rect(arrowX,y,5,5);}
 }
 void move() {
   //reset the movement to zero
@@ -146,8 +146,6 @@ void move() {
   moveY=0;
   //check for vertical movement
   if (goUp) {
-
-
     moveY = -2;
   }
   //check for vertical movement
@@ -162,7 +160,6 @@ void move() {
   if (goLeft) {
     moveX = -2;
   }
-
   // add the movement
   x= x+moveX;
   y= y+moveY;

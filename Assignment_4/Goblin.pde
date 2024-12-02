@@ -40,6 +40,6 @@ class goblin {
     if (timer >= 100) {
       hurt = 255;
     }
-    println(timer);
+
   }
 }
