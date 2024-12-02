@@ -24,11 +24,19 @@ class goblin {
     }
     if (gobX>= x&& gobX <=x+10) {
       if (gobY>= y&& gobY <=y+10) {
-        if(timer >= 100){
+        if (timer >= 100) {
+
           timer = 0;
-        gameOver--;
+          gameOver--;
+          ;
         }
       }
+    }
+    if (timer <= 100) {
+      hurt = frameCount%40;
+    }
+    if (timer >= 100) {
+      hurt = 255;
     }
     println(timer);
   }

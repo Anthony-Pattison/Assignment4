@@ -11,7 +11,7 @@ float y;
 int health = 6;
 int score;
 int gameOver;
-
+int hurt;
 Charger myCharger;
 goblin myGoblin;
 tree myTrees;
@@ -19,7 +19,7 @@ tree myTrees;
 PImage heart;
 tree[] trees = new tree[20];
 void setup() {
-  
+hurt = 255;
   size( 400, 400);
   heart = loadImage("heart.png");
   myGoblin = new goblin();
@@ -33,19 +33,23 @@ void setup() {
 }
 void draw() {
   background(#32C602);
-  for(int i =1; (i-1)<gameOver;i++){
-  image(heart,(30*i),30,30,30);
+  ellipse(45, 45, 5, 5);
+  ellipse(75, 45, 5, 5);
+  ellipse(105, 45, 5, 5);
+  for (int i =1; (i-1)<gameOver; i++) {
+    image(heart, (30*i), 30, 30, 30);
   }
   fill(0);
   myCharger.movement();
   myCharger.display();
   myGoblin.display();
   myGoblin.move();
+  fill(0,0,0,hurt);
   rect(x, y, 20, 20);
   for (int i = 0; i<trees.length; i++) {
     trees[i].display();
   }
-  
+
   move();
   attack();
   fill(225);
