@@ -9,7 +9,9 @@ class goblin {
     rect(gobX, gobY, 5, 5);
   }
   void move() {
+    if(timer < 100){
     timer++;
+    }else{}
     if (x+5>=gobX) {
       gobX++;
     }

@@ -4,6 +4,7 @@ boolean goLeft = false;
 boolean goRight = false;
 boolean att = false;
 boolean lookRight = false;
+boolean arrowMove;
 float moveX;
 float moveY;
 float x;
@@ -12,6 +13,8 @@ int health = 6;
 int score;
 int gameOver;
 int hurt;
+int arrowX;
+
 Charger myCharger;
 goblin myGoblin;
 tree myTrees;
@@ -30,6 +33,7 @@ hurt = 255;
   x=200;
   y=200;
   gameOver = 3;
+  arrowX = int(x);
 }
 void draw() {
   background(#32C602);
@@ -75,6 +79,9 @@ void keyPressed() {
   if (keyCode == 'M') {
     att = true;
   }
+  if (keyCode == 'N') {
+    arrowMove = true;
+  }
 }
 void keyReleased() {
   if (keyCode == 'W') {
@@ -91,6 +98,9 @@ void keyReleased() {
   }
   if (keyCode == 'M') {
     att = false;
+  }
+   if (keyCode == 'M') {
+    arrowMove = false;
   }
 }
 
@@ -122,7 +132,13 @@ void attack() {
     health = 6;
     score = score + 2;
   }
-  println(health);
+ if(arrowMove){
+ 
+ arrowX++;
+  
+ 
+ }
+ if(key == 'n'){ rect(arrowX,y,5,5);}
 }
 void move() {
   //reset the movement to zero

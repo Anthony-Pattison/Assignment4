@@ -21,12 +21,14 @@ class Charger {
     if (location.y>=y) {
       velocity.y  = velocity.y - .01;
     }
-    if(location.x == x && location.y == y){
-    if (timer >= 100) {
+    if (location.x <= x+10 && location.x+20 >= x) {
+      if (location.y <= y+10 && location.y+20 >= y) {
+        if (timer >= 100) {
 
           timer = 0;
           gameOver--;
-    }
+        }
+      }
     }
     // y axis
     if (location.y> height-30) {
