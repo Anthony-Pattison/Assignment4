@@ -52,7 +52,7 @@ void draw() {
     myArrows.movereal();
   }
   myArrows.display();
-
+  myArrows.hit();
   myCharger.movement();
   myCharger.display();
   myGoblin.display();
