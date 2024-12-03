@@ -1,5 +1,5 @@
-Shadow maker
-W	y_movement	3	SLIDER	Y Axis	0	1.0	0.0
-D	x_movement	3	SLIDER	X Axis	0	1.0	0.0
-X	sword_attac	1	BUTTON	Button 2	0	0.0	0.0
-B	arrow_attac	1	BUTTON	Button 1	0	0.0	0.0
+Knight controler
+X	X position	3	SLIDER	X Axis	0	1.0	0.0
+Y	Y position	3	SLIDER	Y Axis	0	1.0	0.0
+ARROW	arrowattc	1	BUTTON	Button 1	0	0.0	0.0
+SWORD	swordattc	1	BUTTON	Button 2	0	0.0	0.0
