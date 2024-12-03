@@ -3,23 +3,26 @@
 class Charger {
   PVector location;
   PVector velocity;
+  PVector acceleration;
   Charger() {
     location = new PVector(100, 100);
-    velocity = new PVector(0.1, 0);
+    velocity = new PVector(0, 0);
+    acceleration = new PVector(0.01, 0);
   }
   void movement() {
+    
     location.add(velocity);
     if (location.x<=x) {
-      velocity.x  = velocity.x+ .01;
+      velocity.x  = velocity.x+ acceleration.x;
     }
     if (location.x>=x) {
-      velocity.x  = velocity.x- .01;
+      velocity.x  = velocity.x- acceleration.x;
     }
     if (location.y<=y) {
-      velocity.y  = velocity.y+ .01;
+      velocity.y  = velocity.y+ acceleration.x;
     }
     if (location.y>=y) {
-      velocity.y  = velocity.y - .01;
+      velocity.y  = velocity.y - acceleration.x;
     }
     if (location.x <= x+10 && location.x+20 >= x) {
       if (location.y <= y+10 && location.y+20 >= y) {

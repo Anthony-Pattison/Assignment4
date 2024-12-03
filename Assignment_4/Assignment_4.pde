@@ -131,8 +131,8 @@ void attack() {
     rect(x+(32*int(lookRight)), y+15, 10, 5);
     if (gobX+40 >= x+(22*int(lookRight)) && gobX<=x+5+(32*int(lookRight))) {
       if (gobY+40. >=y-2 && gobY<=y+15) {
-        gobY = int(random(10, 40));
-        gobX = int(random(10, 40));
+        gobY = int(random(10, height));
+        gobX = int(random(10, width));
         score++;
       }
     }
@@ -147,8 +147,8 @@ void attack() {
     }
   }
   if (health == 0) {
-    myCharger.location.y = 0;
-    myCharger.location.x = 0;
+    myCharger.location.y = int(random(0,height));
+    myCharger.location.x = int(random(0,width));;
     myCharger.velocity.x = 0;
     health = 6;
     score = score + 2;
