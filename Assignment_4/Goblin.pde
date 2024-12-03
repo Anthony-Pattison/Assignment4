@@ -6,26 +6,27 @@ class goblin {
   goblin() {
   }
   void display() {
-    rect(gobX, gobY, 5, 5);
+    tint(255, 255, 255, 255);
+    image(goblin, gobX, gobY, 40, 40);
   }
   void move() {
     if(timer < 100){
     timer++;
     }else{}
-    if (x+5>=gobX) {
+    if (x+10>=gobX) {
       gobX++;
     }
-    if (x+5<=gobX) {
+    if (x+10<=gobX) {
       gobX--;
     }
-    if (y+5>=gobY) {
+    if (y+10>=gobY) {
       gobY++;
     }
-    if (y+5<=gobY) {
+    if (y+10<=gobY) {
       gobY--;
     }
-    if (gobX>= x&& gobX <=x+10) {
-      if (gobY>= y&& gobY <=y+10) {
+    if (gobX+20>= x&& gobX <=x+20) {
+      if (gobY+20>= y&& gobY <=y+20) {
         if (timer >= 100) {
 
           timer = 0;

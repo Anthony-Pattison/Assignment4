@@ -54,6 +54,7 @@ class Charger {
     }
   }
   void display() {
-    rect(location.x, location.y, 30, 30);
+     tint(255, 255, 255, 255);
+    image(ghoast,location.x, location.y, 40, 40);
   }
 }

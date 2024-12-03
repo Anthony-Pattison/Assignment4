@@ -21,11 +21,17 @@ goblin myGoblin;
 tree myTrees;
 
 PImage heart;
+PImage knight;
+PImage goblin;
+PImage ghoast;
 tree[] trees = new tree[20];
 void setup() {
   hurt = 255;
   size( 400, 400);
   heart = loadImage("heart.png");
+  knight = loadImage("knight.png");
+  goblin = loadImage("goblin.png");
+  ghoast = loadImage("ghoast.png");
   myGoblin = new goblin();
   myCharger = new Charger();
   myArrows = new Arrows();
@@ -42,16 +48,17 @@ void draw() {
   ellipse(75, 45, 5, 5);
   ellipse(105, 45, 5, 5);
   for (int i =1; (i-1)<gameOver; i++) {
+    tint(255, 255, 255, 255);
     image(heart, (30*i), 30, 30, 30);
   }
   fill(0);
-  if(score >= 20){
-  if (!shoot) {
-    myArrows.move();
-  }
-  if (shoot) {
-    myArrows.movereal();
-  }
+  if (score >= 20) {
+    if (!shoot) {
+      myArrows.move();
+    }
+    if (shoot) {
+      myArrows.movereal();
+    }
   }
   myArrows.display();
   myArrows.hit();
@@ -59,8 +66,8 @@ void draw() {
   myCharger.display();
   myGoblin.display();
   myGoblin.move();
-  fill(0, 0, 0, hurt);
-  rect(x, y, 20, 20);
+  tint(255, 255, 255, hurt);
+  image(knight, x, y, 40, 40);
   for (int i = 0; i<trees.length; i++) {
     trees[i].display();
   }
@@ -103,7 +110,6 @@ void keyReleased() {
   }
   if (keyCode == 'A') {
     goLeft = false;
-   
   }
   if (keyCode == 'D') {
     goRight = false;
@@ -116,11 +122,11 @@ void keyReleased() {
 void attack() {
   if (att) {
     fill(255);
-    rect(x-10+(32*int(lookRight)), y, 10, 5);
-    if (gobX >=x-10+(32*int(lookRight)) && gobX<=x+(32*int(lookRight))) {
-      if (gobY >=y-2 && gobY<=y+5) {
-        gobY = int(random(10,40));
-        gobX = int(random(10,40));
+    rect(x+(32*int(lookRight)), y+15, 10, 5);
+    if (gobX+40 >= x+(22*int(lookRight)) && gobX<=x+5+(32*int(lookRight))) {
+      if (gobY+40. >=y-2 && gobY<=y+15) {
+        gobY = int(random(10, 40));
+        gobX = int(random(10, 40));
         score++;
       }
     }
@@ -162,7 +168,7 @@ void move() {
   if (goLeft) {
     moveX = -2;
   }
-  
+
   // add the movement
   x= x+moveX;
   y= y+moveY;

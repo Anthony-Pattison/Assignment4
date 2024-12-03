@@ -22,8 +22,8 @@ class Arrows {
     }
   }
   void hit() {
-    if (gobX >=arrowX && gobX<=arrowX+10) {
-      if (gobY >=arrowY && gobY<=arrowY+10) {
+    if (gobX+40 >=arrowX && gobX<=arrowX+10) {
+      if (gobY+40 >=arrowY && gobY<=arrowY+10) {
         gobY = 0;
         gobX = 0;
         score++;
