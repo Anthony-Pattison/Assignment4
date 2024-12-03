@@ -1,3 +1,12 @@
+import org.procontrolplus.gui.*;
+import org.procontrolplus.*;
+import net.java.game.input.*;
+
+ControlI0 control;
+ControlDevice stick;
+float px, py;
+boolean trailOn;
+
 boolean goUp = false;
 boolean goDown = false;
 boolean goLeft = false;
@@ -28,6 +37,13 @@ tree[] trees = new tree[20];
 void setup() {
   hurt = 255;
   size( 400, 400);
+  control = CrontrolIO.getInstance(this);
+  stick = control.getMatchDevice("joystick");
+  if(stick == null){
+   println("No suitable device configured"); 
+  System.exit(-1);
+}
+stick.getButton("Shadow").plug(this,"dropShadow", ControlIO.ON_RELEASED);
   heart = loadImage("heart.png");
   knight = loadImage("knight.png");
   goblin = loadImage("goblin.png");
