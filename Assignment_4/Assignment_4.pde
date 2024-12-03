@@ -1,10 +1,4 @@
 
-import net.java.games.input.*;
-import org.gamecontrolplus.*;
-import org.gamecontrolplus.gui.*;
-
-ControlIO control;
-ControlDevice stick;
 float px, py;
 boolean trailOn;
 
@@ -37,16 +31,7 @@ PImage ghoast;
 tree[] trees = new tree[20];
 void setup() {
   hurt = 255;
-  size( 400, 400);
-  control = ControlIO.getInstance(this);
-  stick = control.getMatchedDevice("joystick");
-  if(stick == null){
-   println("No suitable device configured"); 
-  System.exit(-1);
-}
-//stick.getButton("SWORD").plug(this,"swordattc", ControlIO.ON_RELEASE);
-  
-  
+  size(400,400);
   heart = loadImage("heart.png");
   knight = loadImage("knight.png");
   goblin = loadImage("goblin.png");
@@ -61,13 +46,9 @@ void setup() {
   y=200;
   gameOver = 3;
 }
-public void getUserInput(){
-px = map(stick.getSlider("X").getValue(), -1,1,0,width);
-py = map(stick.getSlider("X").getValue(), -1,1,0,height);
-trailOn = stick.getButton("ARROW").pressed();
-}
+
 void draw() {
-  getUserInput();
+ 
   background(#32C602);
   ellipse(45, 45, 5, 5);
   ellipse(75, 45, 5, 5);
@@ -174,7 +155,7 @@ void attack() {
   }
 }
 void move() {
-  getUserInput();
+  
   //reset the movement to zero
   moveX=0;
   moveY=0;

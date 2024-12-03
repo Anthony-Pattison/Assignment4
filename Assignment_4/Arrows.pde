@@ -10,8 +10,8 @@ class Arrows {
     rect(arrowX, arrowY, 5, 5);
   }
   void move() {
-    arrowX = int(x);
-    arrowY = int(y);
+    arrowX = int(x)+20;
+    arrowY = int(y)+20;
   }
   void movereal() {
     arrowAcce = 5;
