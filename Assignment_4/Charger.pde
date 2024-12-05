@@ -1,4 +1,4 @@
-// this is an enemie that will use
+// this is an enemy that will use
 // pvevctors to move and their movement will slowly become faster
 class Charger {
   PVector location;

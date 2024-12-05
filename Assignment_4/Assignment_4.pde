@@ -9,6 +9,8 @@ boolean goRight = false;
 boolean att = false;
 boolean lookRight = false;
 boolean arrowMove;
+boolean game = false;
+
 float moveX;
 float moveY;
 float x;
@@ -30,8 +32,9 @@ PImage goblin;
 PImage ghoast;
 tree[] trees = new tree[20];
 void setup() {
+
   hurt = 255;
-  size(400,400);
+  size(400, 400);
   heart = loadImage("heart.png");
   knight = loadImage("knight.png");
   goblin = loadImage("goblin.png");
@@ -48,42 +51,71 @@ void setup() {
 }
 
 void draw() {
- 
-  background(#32C602);
-  ellipse(45, 45, 5, 5);
-  ellipse(75, 45, 5, 5);
-  ellipse(105, 45, 5, 5);
-  for (int i =1; (i-1)<gameOver; i++) {
-    tint(255, 255, 255, 255);
-    image(heart, (30*i), 30, 30, 30);
-  }
   fill(0);
-  if (score >= 20) {
-    if (!shoot) {
-      myArrows.move();
-    }
-    if (shoot) {
-      myArrows.movereal();
-    }
-  }
-  myArrows.display();
-  myArrows.hit();
-  myCharger.movement();
-  myCharger.display();
-  myGoblin.display();
-  myGoblin.move();
-  tint(255, 255, 255, hurt);
-  image(knight, x, y, 40, 40);
-  for (int i = 0; i<trees.length; i++) {
-    trees[i].display();
+  rect(0, 0, width, height);
+  fill(255);
+  textSize(40);
+  text("Kights & Goblins", 62, 100);
+  fill(#32C602);
+  rect(145,120,100,100);
+  tint(255, 255, 255, 255);
+  image(knight,145,120);
+  textSize(20);
+  fill(255);
+  text("Press Space to play", 120, 250);
+  text("Use wasd to move", 125, 270);
+  text("Use m to attack", 130, 290);
+  text("Once you get a score of 20", 100, 320);
+   text("can shoot your bow by using n!", 80, 340);
+  textSize(10);
+  if (key == ' ') {
+    game();
   }
 
-  move();
-  attack();
-  fill(225);
-  rect(337, 375, 55, 20);
-  fill(0);
-  text("Score: "+score, 340, 388);
+  if (game) {
+    background(#32C602);
+    ellipse(45, 45, 5, 5);
+    ellipse(75, 45, 5, 5);
+    ellipse(105, 45, 5, 5);
+    for (int i =1; (i-1)<gameOver; i++) {
+      tint(255, 255, 255, 255);
+      image(heart, (30*i), 30, 30, 30);
+    }
+    fill(0);
+    if (score >= 20) {
+      if (!shoot) {
+        myArrows.move();
+      }
+      if (shoot) {
+        myArrows.movereal();
+      }
+    }
+    myArrows.display();
+    myArrows.hit();
+    myCharger.movement();
+    myCharger.display();
+    myGoblin.display();
+    myGoblin.move();
+    tint(255, 255, 255, hurt);
+    image(knight, x, y, 40, 40);
+    for (int i = 0; i<trees.length; i++) {
+      trees[i].display();
+    }
+
+    move();
+    attack();
+    fill(225);
+    rect(337, 375, 55, 20);
+    fill(0);
+    text("Score: "+score, 340, 388);
+    if (gameOver == 0) {
+      game = false;
+      
+    }
+  }
+  if (game == false) {
+    gameReset();
+  }
 }
 void keyPressed() {
   if (keyCode == 'W') {
@@ -147,15 +179,16 @@ void attack() {
     }
   }
   if (health == 0) {
-    myCharger.location.y = int(random(0,height));
-    myCharger.location.x = int(random(0,width));;
+    myCharger.location.y = int(random(0, height));
+    myCharger.location.x = int(random(0, width));
+    ;
     myCharger.velocity.x = 0;
     health = 6;
     score = score + 2;
   }
 }
 void move() {
-  
+
   //reset the movement to zero
   moveX=0;
   moveY=0;
