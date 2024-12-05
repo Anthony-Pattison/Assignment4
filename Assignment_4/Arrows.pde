@@ -26,8 +26,8 @@ class Arrows {
     // see if the arrow hit the goblin
     if (gobX+40 >=arrowX && gobX<=arrowX+10) {
       if (gobY+40 >=arrowY && gobY<=arrowY+10) {
-        gobY = 0;
-        gobX = 0;
+        gobY = int(random(10, height));
+        gobX = int(random(10, width));
         score++;
       }
     }
