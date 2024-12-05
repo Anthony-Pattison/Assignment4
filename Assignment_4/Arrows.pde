@@ -17,7 +17,6 @@ class Arrows {
     // once the player shoots the arrow if flies accros the screen
     arrowAcce = 5;
     arrowX -= arrowAcce;
-    println(arrowAcce);
     if (arrowX >= width ||arrowX <= 0 ) {
       shoot = false;
     }
