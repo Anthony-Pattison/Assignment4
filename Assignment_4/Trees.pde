@@ -8,6 +8,7 @@ class tree {
     treeY = 5;
   }
   void display() {
+    // draws the trees based on the for loop in the main methood
     noStroke();
     fill(#7C4141);
     rect(treeX-1, treeY+10, 5, 20);
