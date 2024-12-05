@@ -76,7 +76,7 @@ void draw() {
   text("Use wasd to move", 125, 270);
   text("Use m to attack", 130, 290);
   text("Once you get a score of 20", 100, 320);
-   text("can shoot your bow by using n!", 80, 340);
+  text("you can shoot your bow by using n!", 80, 340);
   textSize(10);
   // needs user input to run
   if (key == ' ') {
